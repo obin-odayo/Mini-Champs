@@ -11,5 +11,4 @@ Creeps are small Creatures which have low to medium health pool, and deal low to
 
 ## Giants
 
-
-Giants are large Creatures with a high health pool and deal high damage. Giants drop gold and sometimes [[equipment]] on kill.
+Giants are large Creatures with a high health pool and deal high damage. Giants drop gold and sometimes [[materials]] on kill.

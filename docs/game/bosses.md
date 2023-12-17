@@ -8,3 +8,5 @@ Bosses are large non-playable characters (NPCs) which have a massive health pool
 They move slow but if they reach your [[Crystal]] it gets instantly destroyed.
 
 They spawn only at certain stages of the game, and the round will not end unless they die.
+
+Bosses drop alot of [[gold]] and [[materials]] on death. They also give experience if Mini Champs are near them when they died.

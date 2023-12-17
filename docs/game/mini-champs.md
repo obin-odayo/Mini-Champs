@@ -7,4 +7,4 @@ The Mini Champ is the player controlled character in the game. The Mini Champ ca
 
 Mini Champions have [[equipment]] slots which will make them stronger. 
 
-Mini Champions have abilities which are upgraded when they level up passively through out the game.
+Mini Champions have abilities. As the game progresses, they earn experience points which are used in increasing the base stats of their abilities.
