@@ -7,4 +7,4 @@ Materials are the second main currency of the game. Used in the [[blacksmith]] t
 
 # Jungle Equipment
 
-Sometimes rare Materials or jungle Materials are dropped from [[creatures]] in the [[jungle]]. Rare Materials can be used to buy Jungle Equipment from the Blacksmith.
+Sometimes rare Materials or jungle Materials are dropped from [[creatures]], Giants, in the [[jungle]]. Rare Materials can be used to buy Jungle Equipment from the Blacksmith.
