@@ -9,7 +9,7 @@ Equipment increase the base stats of Mini Champs.
 
 Mini Champs can have 6 Equipment at a time and 1 Jungle Equipment.
 
-## Jungle Equipment
+# Jungle Equipment
 
 Are rare Equipment bought from the Blacksmith using Jungle [[materials]] which are dropped by [[creatures]] in the [[jungle]]. 
 

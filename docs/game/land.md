@@ -3,4 +3,6 @@
 
 # Land
 
-Land are regions in the [[map]] where majority of [[enemies]], [[mini-champs]], [[allies]], [[bosses]], and [[creatures]] are located.
+Land are regions in the [[map]] and majority of [[enemies]], [[mini-champs]], [[allies]], [[bosses]], and [[creatures]] have the ability to walk in these regions.
+
+The Land contains [[the-path]], [[portal]], [[crystal]], [[main-plaza]], [[blacksmith]], and [[jungle]].
