@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1j2qo6sypkvh"]
+
+[ext_resource type="Texture2D" uid="uid://dis1jmvtfh7gs" path="res://icons/logo_red.png" id="1_5gkg8"]
+[ext_resource type="Script" path="res://main.gd" id="2_oaoas"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Title" type="Label" parent="."]
+offset_right = 628.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+text = "Mini Champs"
+
+[node name="GameInfo" type="Label" parent="."]
+offset_top = 613.0
+offset_right = 1139.0
+offset_bottom = 649.0
+theme_override_font_sizes/font_size = 26
+text = "S/S     Version: IN_DEV_0"
+metadata/_edit_group_ = true
+
+[node name="LogoRed" type="Sprite2D" parent="."]
+position = Vector2(1092.5, 61.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_5gkg8")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 616.0
+offset_bottom = 250.0
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 36
+text = "Play"
+alignment = 0
+script = ExtResource("2_oaoas")
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 250.0
+offset_right = 616.0
+offset_bottom = 308.0
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 36
+text = "Exit"
+alignment = 0
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_play_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="PlayButton" method="_on_exit_button_pressed"]
