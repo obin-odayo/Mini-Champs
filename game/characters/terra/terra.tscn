@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmwv2hvg2m44"]
+
+[ext_resource type="Script" path="res://game/characters/terra/terra.gd" id="1_wwxx7"]
+[ext_resource type="Texture2D" uid="uid://bndcyf17stuy" path="res://game/characters/terra/Walk.png" id="2_twosw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhr2o"]
+atlas = ExtResource("2_twosw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhuq1"]
+atlas = ExtResource("2_twosw")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijksu"]
+atlas = ExtResource("2_twosw")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj4u5"]
+atlas = ExtResource("2_twosw")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyrsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhr2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhuq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijksu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj4u5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dbnke"]
+
+[node name="Terra" type="CharacterBody2D"]
+script = ExtResource("1_wwxx7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qyrsm")
+animation = &"walk"
+frame_progress = 0.989373
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dbnke")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
