@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://xl7ust8qrtf1"]
+
+[ext_resource type="Script" path="res://game/characters/ratchet.gd" id="1_panwf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ldcgq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0fe6q"]
+
+[node name="Ratchet" type="CharacterBody3D"]
+script = ExtResource("1_panwf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ldcgq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_0fe6q")
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
+transform = Transform3D(-1, 7.25926e-08, -4.8714e-08, 2.26267e-08, 0.75315, 0.657849, 8.44439e-08, 0.657849, -0.75315, 0, 6.90577, -5)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

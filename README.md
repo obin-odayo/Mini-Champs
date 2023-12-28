@@ -2,7 +2,7 @@
 **A Tower Defense game in-development by Zhean Ganituen ([Obin Odayo](https://github.com/obin-odayo)) through OBI.**
 
 Development Began: DEC 11, 2023
-Last Updated: DEC 18, 2023
+Last Updated: DEC 28, 2023
 
 Version: IN_DEV_0
 
