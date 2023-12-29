@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dspgpoy5lbevh"]
+[gd_scene load_steps=6 format=3 uid="uid://dspgpoy5lbevh"]
 
 [ext_resource type="Texture2D" uid="uid://15eo4d538va5" path="res://game/NPCs/enemies/redSlime/Slime4.png" id="1_g2b3t"]
 [ext_resource type="Script" path="res://game/NPCs/enemies/redSlime/redSlime.gd" id="1_wkymr"]
@@ -22,8 +22,6 @@ animations = [{
 radius = 8.0
 height = 16.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qaa2w"]
-
 [node name="RedSlime" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_wkymr")
 
@@ -33,10 +31,13 @@ sprite_frames = SubResource("SpriteFrames_tv7ff")
 [node name="ShapeSize" type="CollisionShape2D" parent="." groups=["Characters"]]
 shape = SubResource("CapsuleShape2D_h2jv2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_qaa2w")
-
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="Hitbox" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Hitbox" to="." method="_on_control_mouse_exited"]

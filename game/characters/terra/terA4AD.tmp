@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmwv2hvg2m44"]
+[gd_scene load_steps=11 format=3 uid="uid://cmwv2hvg2m44"]
 
 [ext_resource type="Script" path="res://game/characters/terra/terra.gd" id="1_wwxx7"]
 [ext_resource type="Texture2D" uid="uid://bndcyf17stuy" path="res://game/characters/terra/Walk.png" id="2_twosw"]
+[ext_resource type="Script" path="res://game/characters/terra/Camera.gd" id="3_2vgfk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vhr2o"]
 atlas = ExtResource("2_twosw")
@@ -67,6 +68,18 @@ color = Color(1, 1, 0, 0.317647)
 [node name="ShapeHitbox" type="CollisionShape2D" parent="AreaHitbox" groups=["Characters"]]
 position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_nlu8p")
+
+[node name="Camera" type="Camera2D" parent="." groups=["Characters"]]
+zoom = Vector2(2, 2)
+script = ExtResource("3_2vgfk")
+
+[node name="Control" type="Control" parent="Camera"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -288.0
+offset_top = -163.0
+offset_right = 289.0
+offset_bottom = 160.0
 
 [connection signal="body_entered" from="AreaHitbox" to="." method="_on_area_attack_body_entered"]
 [connection signal="body_exited" from="AreaHitbox" to="." method="_on_area_attack_body_exited"]

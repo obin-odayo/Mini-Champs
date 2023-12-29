@@ -11,13 +11,11 @@ var cursorHover = false
 # signal
 signal checkIfOnHover
 
-func _on_area_2d_mouse_entered():
-	if not cursorHover:
-		cursorHover = true
-		emit_signal("checkIfOnHover", cursorHover)
+func _on_control_mouse_entered():
+	cursorHover = true
+	emit_signal("checkIfOnHover", cursorHover)
 
+func _on_control_mouse_exited():
+	cursorHover = false
+	emit_signal("checkIfOnHover", cursorHover)
 
-func _on_area_2d_mouse_exited():    
-	if cursorHover:
-		cursorHover = false
-		emit_signal("checkIfOnHover", cursorHover)

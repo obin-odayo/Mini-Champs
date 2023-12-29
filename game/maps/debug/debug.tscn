@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb788rodyn75x"]
+[gd_scene load_steps=11 format=3 uid="uid://bb788rodyn75x"]
 
 [ext_resource type="PackedScene" uid="uid://cmwv2hvg2m44" path="res://game/characters/terra/terra.tscn" id="1_srh4v"]
 [ext_resource type="PackedScene" uid="uid://dg3b2mpbhyn20" path="res://game/NPCs/crystal/crystal.tscn" id="2_i7lmt"]
+[ext_resource type="PackedScene" uid="uid://dnt4jp483leag" path="res://game/UI/camera/camera.tscn" id="2_vndtr"]
 [ext_resource type="PackedScene" uid="uid://dekv5hsr4r2qa" path="res://game/NPCs/portal/portal.tscn" id="3_xiepj"]
 [ext_resource type="PackedScene" uid="uid://dspgpoy5lbevh" path="res://game/NPCs/enemies/redSlime/redSlime.tscn" id="4_ug7ea"]
 
@@ -89,6 +90,9 @@ color = Color(0.156863, 0.156863, 0.156863, 1)
 
 [node name="Terra" parent="." instance=ExtResource("1_srh4v")]
 position = Vector2(-704, 272)
+
+[node name="Camera" parent="." instance=ExtResource("2_vndtr")]
+position = Vector2(-698, 264)
 
 [node name="Crystal" parent="." instance=ExtResource("2_i7lmt")]
 position = Vector2(-992, 392)

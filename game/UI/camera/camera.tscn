@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnt4jp483leag"]
+
+[ext_resource type="Script" path="res://game/UI/camera/cameraControls.gd" id="3_lkimq"]
+
+[node name="Camera" type="Node2D"]
+
+[node name="Viewport" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -288.0
+offset_top = -163.0
+offset_right = 289.0
+offset_bottom = 160.0
+script = ExtResource("3_lkimq")
+
+[node name="Camera" type="Camera2D" parent="Viewport" groups=["Characters"]]
+position = Vector2(288, 163)
+zoom = Vector2(2, 2)
