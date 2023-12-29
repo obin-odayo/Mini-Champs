@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dspgpoy5lbevh"]
+
+[ext_resource type="Texture2D" uid="uid://15eo4d538va5" path="res://game/NPCs/enemies/redSlime/Slime4.png" id="1_g2b3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ikn4"]
+atlas = ExtResource("1_g2b3t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tv7ff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ikn4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2jv2"]
+radius = 8.0
+height = 16.0
+
+[node name="RedSlime" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tv7ff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_h2jv2")

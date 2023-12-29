@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chs4q0rouss6o"
-path="res://.godot/imported/TilesetNature.png-bddc84c8bed8f8980574bc6c44d7c246.ctex"
+uid="uid://15eo4d538va5"
+path="res://.godot/imported/Slime4.png-d1b1e03ddb99f8ca8c32354ae1be1c37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/TilesetNature.png"
-dest_files=["res://.godot/imported/TilesetNature.png-bddc84c8bed8f8980574bc6c44d7c246.ctex"]
+source_file="res://game/NPCs/enemies/redSlime/Slime4.png"
+dest_files=["res://.godot/imported/Slime4.png-d1b1e03ddb99f8ca8c32354ae1be1c37.ctex"]
 
 [params]
 

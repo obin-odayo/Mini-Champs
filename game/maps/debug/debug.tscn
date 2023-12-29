@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://bb788rodyn75x"]
+
+[ext_resource type="PackedScene" uid="uid://cmwv2hvg2m44" path="res://game/characters/terra/terra.tscn" id="1_srh4v"]
+[ext_resource type="PackedScene" uid="uid://dg3b2mpbhyn20" path="res://game/NPCs/crystal/crystal.tscn" id="2_i7lmt"]
+[ext_resource type="PackedScene" uid="uid://dekv5hsr4r2qa" path="res://game/NPCs/portal/portal.tscn" id="3_xiepj"]
+[ext_resource type="PackedScene" uid="uid://dspgpoy5lbevh" path="res://game/NPCs/enemies/redSlime/redSlime.tscn" id="4_ug7ea"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r88aa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w35u"]
+size = Vector2(88, 2400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rriqg"]
+size = Vector2(88, 2725)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcrfl"]
+size = Vector2(88, 1064)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmeml"]
+size = Vector2(88, 1063)
+
+[node name="solsticePlaza" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+physics_material_override = SubResource("PhysicsMaterial_r88aa")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-1132, 196)
+scale = Vector2(1, 0.32)
+shape = SubResource("RectangleShape2D_0w35u")
+
+[node name="RightBorder" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-157, 194.5)
+scale = Vector2(1, 0.280001)
+shape = SubResource("RectangleShape2D_rriqg")
+
+[node name="TopBorder" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-644, -144.002)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_mcrfl")
+
+[node name="BotBorder" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-643.5, 536.998)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_rmeml")
+
+[node name="topWall" type="ColorRect" parent="World"]
+offset_left = -56.0
+offset_top = -192.0
+offset_right = -16.0
+offset_bottom = -153.0
+scale = Vector2(-27.9241, 2.39095)
+color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="bottomWall" type="ColorRect" parent="World"]
+offset_left = -56.0
+offset_top = 488.0
+offset_right = -16.0
+offset_bottom = 527.0
+scale = Vector2(-27.9241, 2.39095)
+color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="rightWall" type="ColorRect" parent="World"]
+offset_left = -100.0
+offset_top = -144.0
+offset_right = -96.0
+offset_bottom = 137.0
+scale = Vector2(-27.9241, 2.39095)
+color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="rightWall2" type="ColorRect" parent="World"]
+offset_left = -432.0
+offset_top = 72.0
+offset_right = -417.0
+offset_bottom = 179.0
+scale = Vector2(-27.9241, 2.39095)
+color = Color(0.0470588, 0.0431373, 0.278431, 1)
+
+[node name="leftWall" type="ColorRect" parent="World"]
+offset_left = -1173.0
+offset_top = -181.0
+offset_right = -1147.0
+offset_bottom = -142.0
+rotation = -1.5708
+scale = Vector2(-27.9241, 2.39095)
+color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[node name="Terra" parent="." instance=ExtResource("1_srh4v")]
+position = Vector2(-704, 272)
+
+[node name="Crystal" parent="." instance=ExtResource("2_i7lmt")]
+position = Vector2(-992, 392)
+
+[node name="Portal" parent="." instance=ExtResource("3_xiepj")]
+position = Vector2(-248, -40)
+
+[node name="RedSlime" parent="." instance=ExtResource("4_ug7ea")]
+position = Vector2(-608, 344)

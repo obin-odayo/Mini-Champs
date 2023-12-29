@@ -1,29 +1,46 @@
 extends CharacterBody2D
 
+var health = 1000
 var speed = 300
-var target = Vector2() # sets the mouse click position to an ordered pair
+
+var target = position
+
+var enemyInRange = false
+var playerMove = false
+var playerAttack = false
+
+func _on_area_attack_body_entered(body):
+	if body.name == "Enemy":
+		enemyInRange = true
+	else:
+		enemyInRange = false
+
+func _on_area_attack_body_exited(_body):
+	enemyInRange = false
+
+func attackEnemy():
+	var space = get_world_2d().direct_space_state
+	var mousePos = get_global_mouse_position()
+	var HoverOnEnemy = space.intersect_point(mousePos)
+	var collider = HoverOnEnemy.collider
+	
+	if HoverOnEnemy and collider.is_in_group("Enemies"):
+		return true
+	return false
 
 func _input(event):
-	
-	if event.is_action_pressed('moveClick'):
+	if event.is_action_pressed("mainClick"):
 		target = get_global_mouse_position()
+		
+		if enemyInRange:
+			playerAttack = true
+		else:
+			playerMove = true
 
-func _physics_process(delta):
-	# see comment in var target
-	# print(target)	
-	
-	# move the player to the target 	
-	velocity = (target - position).normalized() * speed
-	
-	# rotate the player based on the location of the target
-	# TODO: in the future run a specific sprite animation based on the rotation of the player.
-	# because what this does is that it ROTATES the player in the 2d plane but the character
-	# does not "move/look around."
-	rotation = velocity.angle()
-	
-	# move the player if they're not in the target yet
-	if (target - position).length() > 5:
-		# print("move")
-		move_and_slide()
-	# else:
-		# print("stop")
+func _physics_process(_delta):
+	if playerAttack:
+		attackEnemy()
+	elif playerMove:
+		velocity = position.direction_to(target) * speed
+		if position.distance_to(target) > 10:
+			move_and_slide()
