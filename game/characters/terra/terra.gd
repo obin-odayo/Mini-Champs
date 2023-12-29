@@ -1,23 +1,27 @@
 extends CharacterBody2D
 
-# player traits variables
+# character traits variables
 var health = 1000
 var speed = 300
 var damage = 10
-var attackSpeed = 5
+var attackSpeed = 1
+
+# enemy variables
+@onready var enemiesList = get_tree().get_nodes_in_group("Enemies")
+var enemiesCount = -1 # how many enemies there are, initialize this as -1 
+					  # ---    because we increment it by one at the start  
+var enemiesArray = []
 
 # player controls variables
-
 var playerAttack = false # if player is attacking
 var attackCD = false # for attack speed
 var attackCDStart # start of the CD timer
 var attackCDEnd # end of the CD timer
 var enemyInRange = false # for checking if enemy is in range
+var enemyOnHover = false # for checking if player is hovering on enemy
 
 var playerMove = false # if player is moving
 var target = position # for storing the cursor location for move and click
-
-
 
 # if body enters check if it is an enemy
 # if enemyInRange is false and body inside is an enemy
@@ -26,7 +30,7 @@ func _on_area_attack_body_entered(body):
 	if body.is_in_group("Enemies"):
 		if not enemyInRange: # this is so that only one instance of this code runs
 			enemyInRange = true
-			print("_DEBUG: Update, Enemy entered")
+			print("_DEBUG: Update, enemy entered")
 
 # if body exists check if it is an enemy
 # if enemyInRange is true and body is an enemy
@@ -44,23 +48,46 @@ func _on_area_attack_body_exited(body):
 func attackEnemy():
 	pass
 
+# get the signal from checkIfOnHover (from Enemies)	
+func OnEnemyHover():
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		# connect the checkIfOnHover signal to the checkOnEnemyHover function
+		enemy.checkIfOnHover.connect(checkOnEnemyHover)
+
+# run whenever enemy is hovered
+# if enemy is hover change enemyOnHover to true
+func checkOnEnemyHover(checker):
+	if checker and not enemyOnHover:
+		print("_DEBUG: Update, enemy hovering is ", str(checker))
+		enemyOnHover = true
+	elif not checker and enemyOnHover:
+		print("_DEBUG: Update, enemy hovering is ", str(checker))
+		enemyOnHover = false
+
+func _ready():
+	# run onEnemyHover function (which gets signal from enemies) at the start	
+	OnEnemyHover()
+
 func _input(event):
 	# if player presses mainClick (right mouse button)
 	if event.is_action_pressed("mainClick"):
-		# if enemy is in range make playerAttack true
-		if enemyInRange:
+		# if enemy is in range (from _on_area_...) make playerAttack true
+		# also if enemyOnHover is true (from checkOnEnemyHover)
+		if enemyInRange and enemyOnHover:
 			playerAttack = true
-		
+
 		# if not, then make mouse position as target
 		# and make playerMove true
 		else:
 			target = get_global_mouse_position()
 			playerMove = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# player attacking interval
 	if attackCD:
 		# get the current time
+		playerAttack = false
 		attackCDEnd = Time.get_ticks_msec()
 		
 		# get the time elapsed and convert it from MS to S
@@ -71,23 +98,22 @@ func _physics_process(delta):
 		# make CD false
 		if attackCDElapsed >= attackSpeed:
 			attackCD = false 
+			print("_DEBUG: Update, time elapsed: " + str(attackCDElapsed))
 	
-	# if playerAttack is true (from _input())
+	# if playerAttack is true (from _input())	
 	# and if attackCD is not true
 	# then execute attackEnemy()
 	if playerAttack and not attackCD:
-		print("_DEBUG: Action, Attacking enemy")
+		print("_DEBUG: Action, attacking enemy")
 		attackEnemy()
 		playerAttack = false
 		attackCD = true
 		
 		# get the time in MS at the instant the attack is in cooldown.
 		attackCDStart = Time.get_ticks_msec()
-		
-	# if playerMove is true (from _input()) then move player to target
-	elif playerAttack and attackCD:
-		print("_DEBUG: Action, Cannot attack")
-		playerAttack = false
+	
+	# if playerMove is true (from _input())
+	# then move the player
 	elif playerMove:
 		# set velocity to the angle of the position and speed
 		velocity = position.direction_to(target) * speed

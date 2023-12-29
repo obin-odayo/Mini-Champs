@@ -19,7 +19,7 @@ size = Vector2(88, 1064)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmeml"]
 size = Vector2(88, 1063)
 
-[node name="solsticePlaza" type="Node2D"]
+[node name="debugWorld" type="Node2D"]
 
 [node name="World" type="Node2D" parent="."]
 

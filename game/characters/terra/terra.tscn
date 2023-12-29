@@ -47,28 +47,28 @@ size = Vector2(20, 32)
 [node name="Terra" type="CharacterBody2D"]
 script = ExtResource("1_wwxx7")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["Characters"]]
 sprite_frames = SubResource("SpriteFrames_qyrsm")
 animation = &"walk"
 frame_progress = 0.989373
 
-[node name="ShapeSize" type="CollisionShape2D" parent="."]
+[node name="ShapeSize" type="CollisionShape2D" parent="." groups=["Characters"]]
 shape = SubResource("CapsuleShape2D_dbnke")
 
 [node name="AreaHitbox" type="Area2D" parent="."]
 
-[node name="Facing" type="ColorRect" parent="AreaHitbox"]
+[node name="Facing" type="ColorRect" parent="AreaHitbox" groups=["Characters"]]
 offset_left = 6.0
 offset_top = -16.0
 offset_right = 26.0
 offset_bottom = 16.0
 color = Color(1, 1, 0, 0.317647)
 
-[node name="ShapeHitbox" type="CollisionShape2D" parent="AreaHitbox"]
+[node name="ShapeHitbox" type="CollisionShape2D" parent="AreaHitbox" groups=["Characters"]]
 position = Vector2(16, 0)
 shape = SubResource("RectangleShape2D_nlu8p")
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." groups=["Characters"]]
 zoom = Vector2(2, 2)
 
 [connection signal="body_entered" from="AreaHitbox" to="." method="_on_area_attack_body_entered"]
